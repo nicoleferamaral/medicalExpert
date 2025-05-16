@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Expert - Tecnologia para Vida</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <style>
+        body { font-family: 'Montserrat', Arial, sans-serif; }
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1050;
+            background: rgba(26, 63, 163, 0.92);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 24px rgba(30,60,120,0.13);
+            transition: background 0.3s;
+        }
+        .navbar .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            color: #ffd700 !important;
+            display: flex;
+            align-items: center;
+        }
+        .navbar .navbar-brand img {
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 2px 8px rgba(30,60,120,0.13);
+        }
+        .navbar .nav-link { color: #fff !important; font-weight: 500; }
+        .navbar .nav-link.active, .navbar .nav-link:focus { color: #ffd700 !important; font-weight: bold; }
+        .wave-header { margin-top: 72px; }
+        .wave-header {
+            position: relative;
+            background: linear-gradient(120deg, #1a3fa3 60%, #3e8ed0 100%);
+            color: #fff;
+            overflow: hidden;
+        }
+        .wave-header .wave-illustration {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 120px; z-index: 1;
+        }
+        .header-content {
+            position: relative;
+            z-index: 2;
+            padding-top: 120px;
+            padding-bottom: 60px;
+            text-align: center;
+        }
+        .section-title {
+            color: #1a3fa3;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .services-section, .diferenciais-section, .aspiracao-section, .equipe-section {
+            background: #fff;
+            padding: 4rem 0 2rem 0;
+        }
+        .service-card, .diferencial-card, .aspiracao-card, .equipe-card {
+            background: #f7f9fb;
+            border: none;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(30,60,120,0.07);
+            transition: transform 0.25s cubic-bezier(.4,2,.3,1), box-shadow 0.2s, background 0.2s;
+            text-align: center;
+            cursor: pointer;
+        }
+        .service-card:hover, .diferencial-card:hover, .aspiracao-card:hover, .equipe-card:hover,
+        .service-card:focus, .diferencial-card:focus, .aspiracao-card:focus, .equipe-card:focus {
+            transform: translateY(-10px) scale(1.04) rotate(-1deg);
+            box-shadow: 0 12px 32px rgba(30,60,120,0.18);
+            background: #eaf3ff;
+        }
+        .service-icon, .diferencial-icon, .aspiracao-icon, .equipe-icon {
+            background: #3e8ed0;
+            color: #fff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1rem auto;
+            transition: background 0.2s, color 0.2s;
+        }
+        .service-card:hover .service-icon,
+        .diferencial-card:hover .diferencial-icon,
+        .aspiracao-card:hover .aspiracao-icon,
+        .equipe-card:hover .equipe-icon {
+            background: #ffd700;
+            color: #1a3fa3;
+        }
+        .footer-main {
+            background: #0b1e3a;
+            color: #fff;
+            padding: 3rem 0 1.5rem 0;
+        }
+        .footer-main h5 {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .footer-main ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-main ul li {
+            margin-bottom: 0.7rem;
+        }
+        .footer-main ul li a {
+            color: #4fd1ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .footer-main ul li a:hover {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+        .footer-main .footer-contact i {
+            color: #4fd1ff;
+            margin-right: 8px;
+        }
+        .footer-main .footer-social a {
+            display: inline-block;
+            background: #1a3fa3;
+            color: #4fd1ff;
+            width: 44px; height: 44px;
+            line-height: 44px;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .footer-main .footer-social a:hover {
+            background: #ffd700;
+            color: #1a3fa3;
+        }
+        .footer-bottom {
+            background: #081426;
+            color: #b0c4de;
+            font-size: 1rem;
+            padding: 1rem 0 0.5rem 0;
+        }
+        .footer-bottom a { color: #b0c4de; text-decoration: underline; }
+        .footer-bottom a:hover { color: #ffd700; }
+        @media (max-width: 991px) {
+            .footer-main .row > div { margin-bottom: 2rem; }
+        }
+        @media (max-width: 767px) {
+            .footer-main { text-align: center; }
+            .footer-main .footer-social { justify-content: center !important; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark shadow">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=60&q=80" alt="Logo">MEDICAL EXPERT</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
+        <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="wave-header">
+    <svg class="wave-illustration" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" fill-opacity="0.18" d="M0,80 C360,160 1080,0 1440,80 L1440,0 L0,0 Z"></path><path fill="#fff" fill-opacity="0.10" d="M0,100 C400,180 1040,20 1440,100 L1440,0 L0,0 Z"></path></svg>
+    <div class="header-content">
+        <h1 class="display-5 fw-bold mb-3">Tecnologia Médica Global<br><span class="fs-3 fw-light">ao alcance de todos</span></h1>
+        <p class="lead">Dr. Ricardo A. C. Azevedo</p>
+        <p class="fs-5">Tecnologia para vida</p>
+    </div>
+</div>
+<section class="services-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="text-warning fw-bold">— NOSSOS SERVIÇOS —</span>
+            <h2 class="fw-bold mt-2 mb-4">O que oferecemos</h2>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card service-card p-4 h-100">
+                    <div class="service-icon mb-3"><i class="bi bi-heart-pulse"></i></div>
+                    <h5 class="fw-bold">Tecnologia Médica de Ponta</h5>
+                    <p>Localizada em Santos – SP, principal região portuária brasileira. A porta de entrada perfeita para a distribuição em larga escala para todo o Brasil.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card service-card p-4 h-100">
+                    <div class="service-icon mb-3"><i class="bi bi-currency-dollar"></i></div>
+                    <h5 class="fw-bold">Custo-Benefício</h5>
+                    <p>Atendendo o Sistema Público de Saúde (SUS) e medicina de grupo de larga abrangência, que representam 74,7% do mercado de saúde no Brasil.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card service-card p-4 h-100">
+                    <div class="service-icon mb-3"><i class="bi bi-people"></i></div>
+                    <h5 class="fw-bold">Equipe Especializada</h5>
+                    <p>Equipe experiente e qualificada na parte técnica, jurídica e administrativa, liderada pelo Dr. Ricardo A. C. Azevedo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="diferenciais-section">
+    <div class="container">
+        <h2 class="section-title">Diferenciais Medical Expert</h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card diferencial-card p-4 h-100">
+                    <div class="diferencial-icon mb-3"><i class="bi bi-award"></i></div>
+                    <h5 class="fw-bold">Qualidade e Segurança</h5>
+                    <p>Produtos criteriosamente selecionados, com custos compatíveis e foco em qualidade para o setor público e privado.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card diferencial-card p-4 h-100">
+                    <div class="diferencial-icon mb-3"><i class="bi bi-globe2"></i></div>
+                    <h5 class="fw-bold">Atuação Nacional</h5>
+                    <p>Distribuição em larga escala para todo o Brasil, com base estratégica em Santos-SP.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card diferencial-card p-4 h-100">
+                    <div class="diferencial-icon mb-3"><i class="bi bi-person-check"></i></div>
+                    <h5 class="fw-bold">Equipe Multidisciplinar</h5>
+                    <p>Profissionais experientes em áreas técnicas, jurídicas, administrativas e vendas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="aspiracao-section">
+    <div class="container">
+        <h2 class="section-title">Nossa Aspiração</h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="card aspiracao-card p-4 h-100">
+                    <div class="aspiracao-icon mb-3"><i class="bi bi-bar-chart-line"></i></div>
+                    <h5 class="fw-bold">Democratizar o Acesso</h5>
+                    <p>Levar tecnologia de ponta para elevar o padrão da saúde a um número maior de pessoas.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="card aspiracao-card p-4 h-100">
+                    <div class="aspiracao-icon mb-3"><i class="bi bi-truck"></i></div>
+                    <h5 class="fw-bold">Importação em Larga Escala</h5>
+                    <p>Ser referência nacional em importação e distribuição de soluções médicas inovadoras.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="equipe-section">
+    <div class="container">
+        <h2 class="section-title">Equipe</h2>
+        <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center">
+            <div class="col">
+                <div class="card equipe-card p-4 h-100">
+                    <div class="equipe-icon mb-3"><i class="bi bi-person-badge"></i></div>
+                    <h6 class="fw-bold">Ricardo Alexandre Castro de Azevedo</h6>
+                    <p>Responsável Legal<br>CRM 101.250</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card equipe-card p-4 h-100">
+                    <div class="equipe-icon mb-3"><i class="bi bi-person-badge-fill"></i></div>
+                    <h6 class="fw-bold">Dr. Leandro Machado | MVP advogados</h6>
+                    <p>Assuntos Jurídicos<br>OAB/SP – 166.229</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card equipe-card p-4 h-100">
+                    <div class="equipe-icon mb-3"><i class="bi bi-person-vcard"></i></div>
+                    <h6 class="fw-bold">Dra. Lívia Primo Donni</h6>
+                    <p>Responsável Técnica<br>Crefito 90058 F</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card equipe-card p-4 h-100">
+                    <div class="equipe-icon mb-3"><i class="bi bi-person-vcard-fill"></i></div>
+                    <h6 class="fw-bold">Dr. Rafael Batista de Souza</h6>
+                    <p>Análise de Licitações<br>OAB XXXXXX</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card equipe-card p-4 h-100">
+                    <div class="equipe-icon mb-3"><i class="bi bi-person-lines-fill"></i></div>
+                    <h6 class="fw-bold">Valdis</h6>
+                    <p>Contabilidade</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card equipe-card p-4 h-100">
+                    <div class="equipe-icon mb-3"><i class="bi bi-person-lines-fill"></i></div>
+                    <h6 class="fw-bold">Dra. Lívia Primo Donni</h6>
+                    <p>Vendas</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card equipe-card p-4 h-100">
+                    <div class="equipe-icon mb-3"><i class="bi bi-person-lines-fill"></i></div>
+                    <h6 class="fw-bold">Ednilson Perez</h6>
+                    <p>Responsável Técnico</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card equipe-card p-4 h-100">
+                    <div class="equipe-icon mb-3"><i class="bi bi-person-lines-fill"></i></div>
+                    <h6 class="fw-bold">Sr. Osvaldo Butrico Junior</h6>
+                    <p>Vendas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer-main">
+    <div class="container">
+        <div class="row text-md-start text-center">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5>Links Rápidos</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5>Links Populares</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 footer-contact">
+                <h5>Contato</h5>
+                <div><i class="bi bi-geo-alt"></i> Santos – SP</div>
+                <div><i class="bi bi-envelope"></i> contato@medicalexpert.com.br</div>
+                <div><i class="bi bi-telephone"></i> (13) 99999-9999</div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5>Siga-nos</h5>
+                <div class="footer-social d-flex gap-2">
+                    <a href="#" title="Twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="footer-bottom">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <div>© Medical Expert. Todos os direitos reservados.</div>
+        <div class="text-md-end text-center mt-2 mt-md-0">
+            Desenvolvido por <a href="#">Sua Agência</a>
+        </div>
+    </div>
+</div>
+<a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp" style="position:fixed;right:24px;bottom:24px;z-index:1000;background:#25d366;border-radius:50%;padding:0.7rem;box-shadow:0 2px 8px rgba(30,60,120,0.12);"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:36px;height:36px;"></a>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

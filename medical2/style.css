@@ -1,0 +1,346 @@
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f7f9fb;
+    color: #222;
+}
+
+header {
+    background: linear-gradient(90deg, #1a3fa3 60%, #3e8ed0 100%);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+.logo img {
+    height: 40px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+.nav-links li a:hover {
+    color: #ffd700;
+}
+
+.hero-section {
+    background: linear-gradient(120deg, #1a3fa3 60%, #3e8ed0 100%);
+    color: #fff;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+.hero-content {
+    z-index: 2;
+    position: relative;
+}
+.hero-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.hero-content h1 span {
+    font-weight: 400;
+    font-size: 1.3rem;
+    display: block;
+}
+.hero-content .subtitle {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    color: #cbe6ff;
+}
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('bg-medical.jpg') no-repeat center/cover;
+    opacity: 0.13;
+    z-index: 1;
+}
+
+.sobre-section {
+    background: #fff;
+    padding: 3rem 1rem 2rem 1rem;
+    max-width: 1200px;
+    margin: -60px auto 0 auto;
+    border-radius: 18px;
+    box-shadow: 0 4px 32px rgba(30,60,120,0.07);
+}
+.sobre-section h2 {
+    color: #1a3fa3;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.sobre-grid {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.sobre-grid > div {
+    flex: 1 1 300px;
+    background: #f7f9fb;
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(30,60,120,0.04);
+}
+.missao {
+    margin: 2rem 0;
+    text-align: center;
+}
+.missao ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+}
+.missao-desc {
+    margin-top: 1rem;
+    color: #3e8ed0;
+    font-weight: 500;
+}
+.aspiracao {
+    margin: 2rem 0;
+}
+.aspiracao-grid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.aspiracao-card {
+    background: #eaf3ff;
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    min-width: 220px;
+    box-shadow: 0 2px 8px rgba(30,60,120,0.04);
+    color: #1a3fa3;
+    font-weight: 600;
+}
+.diferencial {
+    margin: 2rem 0;
+}
+.diferencial-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.diferencial-img img {
+    width: 120px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(30,60,120,0.08);
+}
+.diferencial-info {
+    flex: 1;
+    min-width: 220px;
+}
+.equipe {
+    margin: 2rem 0 0 0;
+}
+.equipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1rem;
+}
+
+.produtos-section {
+    background: #f7f9fb;
+    padding: 3rem 1rem 2rem 1rem;
+    max-width: 1200px;
+    margin: 2rem auto 0 auto;
+    border-radius: 18px;
+    box-shadow: 0 4px 32px rgba(30,60,120,0.07);
+}
+.produtos-section h2 {
+    color: #1a3fa3;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.produtos-grid {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.produto-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(30,60,120,0.04);
+    padding: 1.2rem 1.5rem;
+    min-width: 200px;
+    text-align: center;
+}
+.produto-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 0.7rem;
+}
+.produto-card h4 {
+    color: #1a3fa3;
+    margin: 0.5rem 0 0.2rem 0;
+}
+.produtos-licitacoes ul {
+    list-style: disc inside;
+    color: #3e8ed0;
+    font-size: 1rem;
+    margin: 0 auto;
+    max-width: 700px;
+    padding-left: 1.2rem;
+}
+
+.contato-section {
+    background: #fff;
+    padding: 3rem 1rem 2rem 1rem;
+    max-width: 600px;
+    margin: 2rem auto 0 auto;
+    border-radius: 18px;
+    box-shadow: 0 4px 32px rgba(30,60,120,0.07);
+    text-align: center;
+}
+.contato-section h2 {
+    color: #1a3fa3;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+.contato-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.contato-form input,
+.contato-form textarea {
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #cbe6ff;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: none;
+}
+.contato-form button {
+    background: linear-gradient(90deg, #1a3fa3 60%, #3e8ed0 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.contato-form button:hover {
+    background: #1a3fa3;
+}
+.contato-info {
+    color: #3e8ed0;
+    font-weight: 500;
+}
+
+.whatsapp-float {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1000;
+    background: #25d366;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(30,60,120,0.12);
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.whatsapp-float img {
+    width: 36px;
+    height: 36px;
+}
+.whatsapp-float:hover {
+    background: #128c7e;
+}
+
+footer {
+    background: #1a3fa3;
+    color: #fff;
+    padding: 1.2rem 0;
+    text-align: center;
+    margin-top: 2rem;
+}
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.footer-logo {
+    height: 32px;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .sobre-grid, .produtos-grid, .aspiracao-grid, .diferencial-content {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+}
+@media (max-width: 600px) {
+    .sobre-section, .produtos-section, .contato-section {
+        padding: 1.2rem 0.3rem;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .footer-content {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .whatsapp-float {
+        right: 12px;
+        bottom: 12px;
+        padding: 0.4rem;
+    }
+    .whatsapp-float img {
+        width: 28px;
+        height: 28px;
+    }
+} 
