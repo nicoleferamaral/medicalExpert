@@ -4,86 +4,337 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical Expert - Produtos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="description" content="Produtos Medical Expert: Equipamentos médicos, soluções hospitalares e tecnologia de ponta para saúde.">
+    <meta name="keywords" content="produtos médicos, equipamentos hospitalares, tecnologia médica, Medical Expert, saúde, inovação">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.seusite.com.br/produtos.html">
+    <meta property="og:title" content="Produtos - Medical Expert">
+    <meta property="og:description" content="Confira os produtos e soluções tecnológicas da Medical Expert para hospitais e clínicas.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.seusite.com.br/produtos.html">
+    <meta property="og:image" content="https://www.seusite.com.br/logo-network.svg">
+    <meta property="og:locale" content="pt_BR">
+    <link rel="icon" type="image/png" href="media/logo.png">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <style>
         body { font-family: 'Montserrat', Arial, sans-serif; }
-        .section-title { color: #1a3fa3; font-weight: 700; margin-top: 2rem; }
-        .produto-img { height: 120px; object-fit: contain; background: #f7f9fb; border-radius: 10px; }
-        .navbar .nav-link.active { color: #ffd700 !important; font-weight: bold; }
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1050;
+            background: rgba(26, 63, 163, 0.92);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 24px rgba(30,60,120,0.13);
+            transition: background 0.3s;
+        }
+        .navbar .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            color: #ffd700 !important;
+            display: flex;
+            align-items: center;
+        }
+        .navbar .navbar-brand img {
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 2px 8px rgba(30,60,120,0.13);
+        }
+        .navbar .nav-link { color: #fff !important; font-weight: 500; }
+        .navbar .nav-link.active, .navbar .nav-link:focus { color: #ffd700 !important; font-weight: bold; }
+        .wave-header { margin-top: 72px; }
+        .wave-header {
+            position: relative;
+            background: linear-gradient(120deg, #1a3fa3 60%, #3e8ed0 100%);
+            color: #fff;
+            overflow: hidden;
+        }
+        .wave-header .wave-illustration {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 120px; z-index: 1;
+        }
+        .header-content {
+            position: relative;
+            z-index: 2;
+            padding-top: 120px;
+            padding-bottom: 60px;
+            text-align: center;
+        }
+        .section-title {
+            color: #1a3fa3;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .services-section, .diferenciais-section, .aspiracao-section, .equipe-section {
+            background: #fff;
+            padding: 4rem 0 2rem 0;
+        }
+        .service-card, .diferencial-card, .aspiracao-card, .equipe-card {
+            background: #f7f9fb;
+            border: none;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(30,60,120,0.07);
+            transition: transform 0.25s cubic-bezier(.4,2,.3,1), box-shadow 0.2s, background 0.2s;
+            text-align: center;
+            cursor: pointer;
+        }
+        .service-card:hover, .diferencial-card:hover, .aspiracao-card:hover, .equipe-card:hover,
+        .service-card:focus, .diferencial-card:focus, .aspiracao-card:focus, .equipe-card:focus {
+            transform: translateY(-10px) scale(1.04) rotate(-1deg);
+            box-shadow: 0 12px 32px rgba(30,60,120,0.18);
+            background: #eaf3ff;
+        }
+        .service-icon, .diferencial-icon, .aspiracao-icon, .equipe-icon {
+            background: #3e8ed0;
+            color: #fff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1rem auto;
+            transition: background 0.2s, color 0.2s;
+        }
+        .service-card:hover .service-icon,
+        .diferencial-card:hover .diferencial-icon,
+        .aspiracao-card:hover .aspiracao-icon,
+        .equipe-card:hover .equipe-icon {
+            background: #ffd700;
+            color: #1a3fa3;
+        }
+        .footer-main {
+            background: #0b1e3a;
+            color: #fff;
+            padding: 3rem 0 1.5rem 0;
+        }
+        .footer-main h5 {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .footer-main ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-main ul li {
+            margin-bottom: 0.7rem;
+        }
+        .footer-main ul li a {
+            color: #4fd1ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .footer-main ul li a:hover {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+        .footer-main .footer-contact i {
+            color: #4fd1ff;
+            margin-right: 8px;
+        }
+        .footer-main .footer-social a {
+            display: inline-block;
+            background: #1a3fa3;
+            color: #4fd1ff;
+            width: 44px; height: 44px;
+            line-height: 44px;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .footer-main .footer-social a:hover {
+            background: #ffd700;
+            color: #1a3fa3;
+        }
+        .footer-bottom {
+            background: #081426;
+            color: #b0c4de;
+            font-size: 1rem;
+            padding: 1rem 0 0.5rem 0;
+        }
+        .footer-bottom a { color: #b0c4de; text-decoration: underline; }
+        .footer-bottom a:hover { color: #ffd700; }
+        @media (max-width: 991px) {
+            .footer-main .row > div { margin-bottom: 2rem; }
+        }
+        @media (max-width: 767px) {
+            .footer-main { text-align: center; }
+            .footer-main .footer-social { justify-content: center !important; }
+        }
+        .fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(.4,2,.3,1) forwards;
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px) scale(0.97); }
+            60% { opacity: 1; transform: translateY(-8px) scale(1.04); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .produto-specs {
+            margin: 0 0 0 0.5rem;
+            padding: 0 0 0 1.1rem;
+            font-size: 1rem;
+            color: #222;
+            opacity: 0.85;
+            list-style: disc inside;
+            animation: fadeInUp 1.2s cubic-bezier(.4,2,.3,1) 0.3s both;
+        }
+        .produto-img {
+            max-width: 100%;
+            max-height: 140px;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px #1a3fa322;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card {
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(.4,2,.3,1) forwards;
+            border: 1.5px solid #eaf3ff;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(30,60,120,0.07);
+            transition: box-shadow 0.3s, border 0.3s, transform 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 32px #1a3fa322;
+            transform: translateY(-6px) scale(1.02);
+            border: 1.5px solid #cbe6ff;
+        }
+        .card-title {
+            color: #1a3fa3;
+            font-weight: 800;
+            font-size: 1.7rem;
+            letter-spacing: 0.5px;
+            background: linear-gradient(90deg, #1a3fa3 60%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            text-shadow: 0 2px 8px #cbe6ff44;
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="index.html"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=60&q=80" alt="Logo" style="height:40px;border-radius:50%;margin-right:10px;">MEDICAL EXPERT</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
-        <li class="nav-item"><a class="nav-link active" href="produtos.html">Produtos</a></li>
-        <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark shadow" style="width:100vw;min-width:100vw;max-width:100vw;padding-left:0;padding-right:0;">
+    <div class="px-4 d-flex w-100 align-items-center justify-content-between flex-wrap">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="media/logo.png" alt="Logo Medical Expert" class="logo-animado" style="height:40px;width:40px;margin-right:10px;">
+        <span style="color:#fff; font-weight:700; letter-spacing:1px;">MEDICAL EXPERT</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#footer-contato">Contato</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
-<div class="container py-5">
+  </nav>
+<div class="container py-5 produtos-section">
     <h1 class="section-title text-center mb-4">Produtos</h1>
-    <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
-        <div class="col">
-            <div class="card h-100 shadow-sm">
-                <img src="https://images.unsplash.com/photo-1588776814546-ec7e1b1b1b1b?auto=format&fit=crop&w=300&q=80" class="produto-img card-img-top" alt="Cellex Teste Sars-Cov-2">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Cellex</h5>
-                    <p class="card-text">Teste Sars-Cov-2</p>
-                </div>
+    <div class="row row-cols-1 row-cols-md-2 g-4 mb-5">
+      <div class="col">
+        <div class="card h-100 shadow-sm fade-in-up" style="animation-delay:0.1s;">
+          <div class="row g-0 align-items-center">
+            <div class="col-md-5 text-center p-3">
+              <img src="media/innolcon.png" class="produto-img card-img-top" alt="Innolcon Pinça cirúrgica ultrassônica"> 
             </div>
-        </div>
-        <div class="col">
-            <div class="card h-100 shadow-sm">
-                <img src="https://images.unsplash.com/photo-1511174511562-5f97f4f4e0c8?auto=format&fit=crop&w=300&q=80" class="produto-img card-img-top" alt="Johnson & Johnson Cânula orotraqueal">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Johnson & Johnson</h5>
-                    <p class="card-text">Cânula orotraqueal</p>
-                </div>
+            <div class="col-md-7 p-3">
+              <h5 class="card-title">Innolcon</h5>
+              <p class="card-text">Pinça cirúrgica ultrassônica</p>
+              <ul class="produto-specs">
+                <li>Corte e coagulação simultâneos</li>
+                <li>Redução de sangramento</li>
+                <li>Design ergonômico</li>
+                <li>Precisão, segurança e eficiência em procedimentos minimamente invasivos</li>
+                <li>Tecnologia de ponta para resultados superiores</li>
+              </ul>
             </div>
+          </div>
         </div>
-        <div class="col">
-            <div class="card h-100 shadow-sm">
-                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=300&q=80" class="produto-img card-img-top" alt="Welld">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Welld</h5>
-                    <p class="card-text">Estudando futura parceria</p>
-                </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 shadow-sm fade-in-up" style="animation-delay:0.2s;">
+          <div class="row g-0 align-items-center">
+            <div class="col-md-5 text-center p-3">
+              <img src="media/welld.png" class="produto-img card-img-top" alt="Welld">
             </div>
-        </div>
-        <div class="col">
-            <div class="card h-100 shadow-sm">
-                <img src="https://images.unsplash.com/photo-1512070679279-c2f999098c01?auto=format&fit=crop&w=300&q=80" class="produto-img card-img-top" alt="Innolcon Pinça cirúrgica ultrassônica">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Innolcon</h5>
-                    <p class="card-text">Pinça cirúrgica ultrassônica</p>
-                </div>
+            <div class="col-md-7 p-3">
+              <h5 class="card-title">Welld</h5>
+              <p class="card-text">Estudando futura parceria</p>
+              <ul class="produto-specs">
+                <li>Novas soluções em equipamentos médicos inovadores</li>
+                <li>Parceria em estudo para o mercado brasileiro</li>
+                <li>Em breve, novidades!</li>
+              </ul>
             </div>
+          </div>
         </div>
+      </div>
     </div>
     <h2 class="section-title text-center">Licitações e Parcerias</h2>
     <ul class="list-group list-group-flush mx-auto mb-5" style="max-width:700px;">
-        <li class="list-group-item">Prefeitura municipal de Carapicuíba Ordem de licitação 23.297 sp/2021</li>
+        <li class="list-group-item">Prefeitura Municipal de Carapicuíba Ordem de licitação 23.297 sp/2021</li>
         <li class="list-group-item">Prefeitura Municipal de Amparo – Ordem de licitação 05.326 sp/2023</li>
-        <li class="list-group-item">Prefeitura municipal de Santo André Ordem de licitação 12.728 sp/2024</li>
+        <li class="list-group-item">Prefeitura Municipal de Santo André Ordem de licitação 12.728 sp/2024</li>
         <li class="list-group-item">Grupo Notre Dame Intermédica Hapvida Ordem de compra 1000232024</li>
     </ul>
 </div>
-<footer class="bg-primary text-white text-center py-3 mt-5">
-    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=32&q=80" alt="Logo" class="me-2" style="height:32px;border-radius:50%;">
-    Medical Expert &copy; 2024 - Tecnologia para Vida
+<footer class="footer-main" style="background: linear-gradient(90deg, #4666ce 0%, #17208b 100%);" id="footer-contato">
+  <div class="container">
+      <div class="row text-md-start text-center align-items-start gy-4 gx-5">
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+              <h5 class="mb-3">Links Rápidos</h5>
+              <ul class="ps-0 mb-0">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="sobre.html">Sobre</a></li>
+                  <li><a href="produtos.html">Produtos</a></li>
+                  
+              </ul>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 footer-contact">
+              <h5 class="mb-3">Contato</h5>
+              <div class="mb-2"><i class="bi bi-geo-alt"></i> Santos – SP</div>
+              <div class="mb-2 d-flex align-items-center"><i class="bi bi-envelope"></i> <span class="ms-2">ricardo.azevedo@medicalexxpert.com.br</span></div>
+              <div><i class="bi bi-telephone"></i> (11) 99995-0188</div>
+          </div>
+          <div class="col-lg-4 col-md-12">
+              <h5 class="mb-3">Siga-nos</h5>
+              <div class="footer-social d-flex gap-2 flex-wrap">
+                  <a href="https://www.linkedin.com/in/medicalexpertoficial" title="LinkedIn" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
+                  <a href="https://www.instagram.com/medicalexpert_oficial?igsh=MW5vdDdzeHFtYXl4Zw==" title="Instagram" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
+              </div>
+          </div>
+      </div>
+  </div>
 </footer>
-<a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp" style="position:fixed;right:24px;bottom:24px;z-index:1000;background:#25d366;border-radius:50%;padding:0.7rem;box-shadow:0 2px 8px rgba(30,60,120,0.12);"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:36px;height:36px;"></a>
+<div class="footer-bottom" style="background: #17208b;">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <div>© Medical Expert. Todos os direitos reservados.</div>
+      <div class="text-md-end text-center mt-2 mt-md-0">
+          Desenvolvido por <a href="https://github.com/nicoleferamaral" target="_blank" rel="noopener">Nicole Ferreira</a>
+      </div>
+  </div>
+</div>
+<a href="https://wa.me/5511999950188" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp" style="position:fixed;right:24px;bottom:24px;z-index:1000;background:#25d366;border-radius:50%;padding:0.7rem;box-shadow:0 2px 8px rgba(30,60,120,0.12);"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:36px;height:36px;"></a>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>

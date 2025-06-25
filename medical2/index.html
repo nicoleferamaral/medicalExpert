@@ -8,11 +8,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <meta name="description" content="Medical Expert: Soluções inovadoras em tecnologia médica, produtos hospitalares e consultoria especializada. Tecnologia para vida.">
+    <meta name="keywords" content="tecnologia médica, produtos hospitalares, consultoria médica, inovação em saúde, Medical Expert, Dr. Ricardo Azevedo">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.seusite.com.br/">
+    <meta property="og:title" content="Medical Expert - Tecnologia para Vida">
+    <meta property="og:description" content="Soluções inovadoras em tecnologia médica, produtos hospitalares e consultoria especializada.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.seusite.com.br/">
+    <meta property="og:image" content="https://www.seusite.com.br/logo-network.svg">
+    <meta property="og:locale" content="pt_BR">
+    <link rel="icon" type="image/png" href="media/logo.png">
     <style>
         body { font-family: 'Montserrat', Arial, sans-serif; }
         .navbar {
             position: fixed;
             top: 0; left: 0; right: 0;
+            width: 100vw;
+            min-width: 100vw;
+            max-width: 100vw;
             z-index: 1050;
             background: rgba(26, 63, 163, 0.92);
             backdrop-filter: blur(8px);
@@ -35,12 +49,15 @@
         }
         .navbar .nav-link { color: #fff !important; font-weight: 500; }
         .navbar .nav-link.active, .navbar .nav-link:focus { color: #ffd700 !important; font-weight: bold; }
-        .wave-header { margin-top: 72px; }
         .wave-header {
             position: relative;
             background: linear-gradient(120deg, #1a3fa3 60%, #3e8ed0 100%);
             color: #fff;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .wave-header .wave-illustration {
             position: absolute;
@@ -49,9 +66,13 @@
         .header-content {
             position: relative;
             z-index: 2;
-            padding-top: 120px;
-            padding-bottom: 60px;
+            padding-top: 0;
+            padding-bottom: 0;
             text-align: center;
+            flex: 1 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .section-title {
             color: #1a3fa3;
@@ -157,17 +178,246 @@
         .footer-bottom a:hover { color: #ffd700; }
         @media (max-width: 991px) {
             .footer-main .row > div { margin-bottom: 2rem; }
+            .wave-header {
+                min-height: 80vh;
+            }
         }
         @media (max-width: 767px) {
             .footer-main { text-align: center; }
             .footer-main .footer-social { justify-content: center !important; }
         }
+        /* Animação do logotipo */
+        .logo-animado {
+            animation: pulseLogo 1.2s cubic-bezier(.4,2,.3,1) 1, logoSpin 6s linear infinite;
+            transition: transform 0.4s cubic-bezier(.4,2,.3,1), box-shadow 0.3s;
+        }
+        .logo-animado:hover {
+            animation: pulseLogo 0.7s cubic-bezier(.4,2,.3,1) 1, logoSpin 1.5s linear infinite;
+            box-shadow: 0 0 24px 0 #ffd70066;
+            transform: scale(1.08) rotate(-8deg);
+        }
+        @keyframes pulseLogo {
+            0% { transform: scale(1) rotate(0deg); box-shadow: 0 0 0 0 #ffd70044; }
+            40% { transform: scale(1.18) rotate(-8deg); box-shadow: 0 0 24px 0 #ffd70066; }
+            60% { transform: scale(1.08) rotate(4deg); box-shadow: 0 0 12px 0 #ffd70044; }
+            100% { transform: scale(1) rotate(0deg); box-shadow: 0 0 0 0 #ffd70000; }
+        }
+        @keyframes logoSpin {
+            0% { filter: brightness(1) drop-shadow(0 0 0 #ffd70000); }
+            90% { filter: brightness(1.08) drop-shadow(0 0 8px #ffd70044); }
+            100% { filter: brightness(1) drop-shadow(0 0 0 #ffd70000); }
+        }
+        /* Animações header atrativas */
+        .header-title-anim {
+            opacity: 0;
+            transform: translateY(-40px) scale(0.98);
+            animation: headerTitleFade 1.2s cubic-bezier(.4,2,.3,1) 0.2s forwards;
+        }
+        @keyframes headerTitleFade {
+            0% { opacity: 0; transform: translateY(-40px) scale(0.98); }
+            60% { opacity: 1; transform: translateY(8px) scale(1.04); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .header-fadein {
+            opacity: 0;
+            animation: headerFadeIn 1.1s cubic-bezier(.4,2,.3,1) forwards;
+        }
+        .header-fadein:nth-of-type(2) { animation-delay: 1.1s; }
+        .header-fadein:nth-of-type(3) { animation-delay: 1.5s; }
+        @keyframes headerFadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .header-typing {
+            border-right: 2px solid #ffd700;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            min-width: 10ch;
+        }
+        .bg-globos {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .globo-anim {
+            stroke-dasharray: 380;
+            stroke-dashoffset: 380;
+            opacity: 0.7;
+            animation: globoDraw 2.5s cubic-bezier(.4,2,.3,1) forwards, globoPulse 5s ease-in-out infinite;
+        }
+        .globo-anim:nth-child(2) { animation-delay: 0.7s, 0.7s; }
+        .globo-anim:nth-child(3) { animation-delay: 1.2s, 1.2s; }
+        .globo-anim:nth-child(4) { animation-delay: 1.7s, 1.7s; }
+        @keyframes globoDraw {
+            to { stroke-dashoffset: 0; opacity: 1; }
+        }
+        @keyframes globoPulse {
+            0%,100% { filter: blur(0px); opacity: 0.7; }
+            50% { filter: blur(2px); opacity: 1; }
+        }
+        .linha-anim {
+            stroke-dasharray: 600;
+            stroke-dashoffset: 0;
+            opacity: 0.5;
+            animation: linhaMove 7s linear infinite;
+        }
+        .linha-anim:nth-child(2) { animation-delay: 1.2s; }
+        .linha-anim:nth-child(3) { animation-delay: 2.1s; }
+        .linha-anim:nth-child(4) { animation-delay: 3.1s; }
+        .linha-anim:nth-child(5) { animation-delay: 4.1s; }
+        .linha-anim:nth-child(6) { animation-delay: 5.1s; }
+        @keyframes linhaMove {
+            0% { stroke-dashoffset: 600; opacity: 0.2; }
+            10% { opacity: 0.5; }
+            40% { stroke-dashoffset: 0; opacity: 0.8; }
+            60% { stroke-dashoffset: 0; opacity: 0.8; }
+            90% { opacity: 0.5; }
+            100% { stroke-dashoffset: 600; opacity: 0.2; }
+        }
+        .ricardo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1a3fa3, #ffd700);
+        }
+        
+        .ricardo-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .ricardo-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #1a3fa3;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .ricardo-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 2px;
+        }
+        
+        .ricardo-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(26, 63, 163, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .ricardo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(26, 63, 163, 0.15);
+        }
+        
+        .ricardo-image {
+            width: 100%;
+            max-width: 400px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(30,60,120,0.15);
+            border: 4px solid white;
+            transition: transform 0.3s ease;
+        }
+        
+        .ricardo-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .ricardo-info {
+            padding: 2rem;
+        }
+        
+        .ricardo-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a3fa3;
+            margin-bottom: 0.5rem;
+        }
+        
+        .ricardo-role {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .ricardo-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .ricardo-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(26, 63, 163, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .ricardo-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .ricardo-list li i {
+            color: #1a3fa3;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 991px) {
+            .ricardo-section {
+                padding: 3rem 0;
+            }
+            
+            .ricardo-title {
+                font-size: 2.2rem;
+            }
+            
+            .ricardo-image {
+                max-width: 100%;
+                height: 350px;
+                margin-bottom: 2rem;
+            }
+        }
+        .scale-in {
+            animation: scaleIn 0.6s ease-out;
+        }
+        @keyframes scaleIn {
+            from { 
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to { 
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark shadow">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="index.html"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=60&q=80" alt="Logo">MEDICAL EXPERT</a>
+<nav class="navbar navbar-expand-lg navbar-dark shadow" style="width:100vw;min-width:100vw;max-width:100vw;padding-left:0;padding-right:0;">
+  <div class="px-4 d-flex w-100 align-items-center justify-content-between flex-wrap">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="media/logo.png" alt="Logo Medical Expert" class="logo-animado" style="height:40px;width:40px;margin-right:10px;">
+      <span style="color:#fff; font-weight:700; letter-spacing:1px;">MEDICAL EXPERT</span>
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -176,17 +426,28 @@
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
         <li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
-        <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+        <li class="nav-item"><a class="nav-link" href="#footer-contato">Contato</a></li>
       </ul>
     </div>
   </div>
 </nav>
 <div class="wave-header">
     <svg class="wave-illustration" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" fill-opacity="0.18" d="M0,80 C360,160 1080,0 1440,80 L1440,0 L0,0 Z"></path><path fill="#fff" fill-opacity="0.10" d="M0,100 C400,180 1040,20 1440,100 L1440,0 L0,0 Z"></path></svg>
+    <!-- SVG linhas animadas -->
+    <svg class="bg-globos" width="100%" height="100%" viewBox="0 0 1440 800" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
+      <g>
+        <path class="linha-anim" d="M100,120 Q400,40 900,180 T1400,100" stroke="#ffd700" stroke-width="1.5" fill="none" />
+        <path class="linha-anim" d="M0,300 Q300,400 700,250 T1440,350" stroke="#4fd1ff" stroke-width="1.2" fill="none" />
+        <path class="linha-anim" d="M200,600 Q600,700 1200,500" stroke="#fff" stroke-width="1.2" fill="none" />
+        <path class="linha-anim" d="M0,700 Q400,600 1440,780" stroke="#ffd700" stroke-width="1.1" fill="none" />
+        <path class="linha-anim" d="M1200,0 Q1300,200 1440,400" stroke="#4fd1ff" stroke-width="1.1" fill="none" />
+        <path class="linha-anim" d="M0,50 Q200,200 600,80" stroke="#fff" stroke-width="1" fill="none" />
+      </g>
+    </svg>
     <div class="header-content">
-        <h1 class="display-5 fw-bold mb-3">Tecnologia Médica Global<br><span class="fs-3 fw-light">ao alcance de todos</span></h1>
-        <p class="lead">Dr. Ricardo A. C. Azevedo</p>
-        <p class="fs-5">Tecnologia para vida</p>
+        <h1 class="display-5 fw-bold mb-3 header-title-anim">Tecnologia Médica Global<br><span class="fs-3 fw-light header-typing" id="header-typing">ao alcance de todos</span></h1>
+        <p class="lead header-fadein">Dr. Ricardo A. C. Azevedo</p>
+        <p class="fs-5 header-fadein" style="animation-delay:0.5s;">Tecnologia para vida</p>
     </div>
 </div>
 <section class="services-section">
@@ -269,117 +530,106 @@
         </div>
     </div>
 </section>
-<section class="equipe-section">
+<section class="equipe-section ricardo-section">
     <div class="container">
-        <h2 class="section-title">Equipe</h2>
-        <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center">
-            <div class="col">
-                <div class="card equipe-card p-4 h-100">
-                    <div class="equipe-icon mb-3"><i class="bi bi-person-badge"></i></div>
-                    <h6 class="fw-bold">Ricardo Alexandre Castro de Azevedo</h6>
-                    <p>Responsável Legal<br>CRM 101.250</p>
+        <div class="ricardo-content">
+            <h2 class="ricardo-title fade-in">Profissionais</h2>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 text-center">
+                    <img src="media/ricardo-azevedo.png" alt="Ricardo Alexandre Castro de Azevedo" class="ricardo-image scale-in" style="max-width:320px;max-height:320px;">
+                </div>
+                <div class="col-lg-7">
+                    <div class="ricardo-card slide-up">
+                        <div class="ricardo-info">
+                            <h3 class="ricardo-name">Ricardo Alexandre Castro de Azevedo</h3>
+                            <p class="ricardo-role">Médico, cirurgia geral e cirurgia vascular<br>CRM 101.250</p>
+                            <ul class="ricardo-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Background com mais de 2.000 cirurgias realizadas</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Founder Whapolde Holdings International – Cayman</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Participações via investimento direto ligadas à empresas da área de saúde</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card equipe-card p-4 h-100">
-                    <div class="equipe-icon mb-3"><i class="bi bi-person-badge-fill"></i></div>
-                    <h6 class="fw-bold">Dr. Leandro Machado | MVP advogados</h6>
-                    <p>Assuntos Jurídicos<br>OAB/SP – 166.229</p>
+            <div class="row align-items-center justify-content-center mt-5 flex-row-reverse">
+                <div class="col-lg-5 mb-4 mb-lg-0 text-center">
+                    <img src="media/livia.jpg" alt="Lívia Primon Donini" class="ricardo-image scale-in" style="max-width:320px;max-height:320px;object-fit:cover;background:#eaf3ff;border:2px solid #4fd1ff;">
                 </div>
-            </div>
-            <div class="col">
-                <div class="card equipe-card p-4 h-100">
-                    <div class="equipe-icon mb-3"><i class="bi bi-person-vcard"></i></div>
-                    <h6 class="fw-bold">Dra. Lívia Primo Donni</h6>
-                    <p>Responsável Técnica<br>Crefito 90058 F</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card equipe-card p-4 h-100">
-                    <div class="equipe-icon mb-3"><i class="bi bi-person-vcard-fill"></i></div>
-                    <h6 class="fw-bold">Dr. Rafael Batista de Souza</h6>
-                    <p>Análise de Licitações<br>OAB XXXXXX</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card equipe-card p-4 h-100">
-                    <div class="equipe-icon mb-3"><i class="bi bi-person-lines-fill"></i></div>
-                    <h6 class="fw-bold">Valdis</h6>
-                    <p>Contabilidade</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card equipe-card p-4 h-100">
-                    <div class="equipe-icon mb-3"><i class="bi bi-person-lines-fill"></i></div>
-                    <h6 class="fw-bold">Dra. Lívia Primo Donni</h6>
-                    <p>Vendas</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card equipe-card p-4 h-100">
-                    <div class="equipe-icon mb-3"><i class="bi bi-person-lines-fill"></i></div>
-                    <h6 class="fw-bold">Ednilson Perez</h6>
-                    <p>Responsável Técnico</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card equipe-card p-4 h-100">
-                    <div class="equipe-icon mb-3"><i class="bi bi-person-lines-fill"></i></div>
-                    <h6 class="fw-bold">Sr. Osvaldo Butrico Junior</h6>
-                    <p>Vendas</p>
+                <div class="col-lg-7">
+                    <div class="ricardo-card slide-up">
+                        <div class="ricardo-info">
+                            <h3 class="ricardo-name">Lívia Primon Donini</h3>
+                            <p class="ricardo-role">Fisioterapeuta | RT - Responsável Técnica</p>
+                            <ul class="ricardo-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Fisioterapeuta formada e pós-graduada em Fisioterapia Cardiorrespiratória pela Universidade Metodista de São Paulo</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Mais de 20 anos de atuação na área hospitalar</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Comprometida com excelência, segurança e qualidade na assistência e nos processos de saúde</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<footer class="footer-main">
+<footer class="footer-main" style="background: linear-gradient(90deg, #4666ce 0%, #17208b 100%);" id="footer-contato">
     <div class="container">
-        <div class="row text-md-start text-center">
-            <div class="col-lg-3 col-md-6 mb-4">
-                <h5>Links Rápidos</h5>
-                <ul>
+        <div class="row text-md-start text-center align-items-start gy-4 gx-5">
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <h5 class="mb-3">Links Rápidos</h5>
+                <ul class="ps-0 mb-0">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="sobre.html">Sobre</a></li>
                     <li><a href="produtos.html">Produtos</a></li>
-                    <li><a href="contato.html">Contato</a></li>
+                    
                 </ul>
             </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <h5>Links Populares</h5>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
-                    <li><a href="produtos.html">Produtos</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                </ul>
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 footer-contact">
+                <h5 class="mb-3">Contato</h5>
+                <div class="mb-2"><i class="bi bi-geo-alt"></i> Santos – SP</div>
+                <div class="mb-2 d-flex align-items-center"><i class="bi bi-envelope"></i> <span class="ms-2">ricardo.azevedo@medicalexxpert.com.br</span></div>
+                <div><i class="bi bi-telephone"></i> (11) 99995-0188</div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-4 footer-contact">
-                <h5>Contato</h5>
-                <div><i class="bi bi-geo-alt"></i> Santos – SP</div>
-                <div><i class="bi bi-envelope"></i> contato@medicalexpert.com.br</div>
-                <div><i class="bi bi-telephone"></i> (13) 99999-9999</div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <h5>Siga-nos</h5>
-                <div class="footer-social d-flex gap-2">
-                    <a href="#" title="Twitter"><i class="bi bi-twitter"></i></a>
-                    <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                    <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <div class="col-lg-4 col-md-12">
+                <h5 class="mb-3">Siga-nos</h5>
+                <div class="footer-social d-flex gap-2 flex-wrap">
+                    <a href="https://www.linkedin.com/in/medicalexpertoficial" title="LinkedIn" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.instagram.com/medicalexpert_oficial?igsh=MW5vdDdzeHFtYXl4Zw==" title="Instagram" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-<div class="footer-bottom">
+<div class="footer-bottom" style="background: #17208b;">
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
         <div>© Medical Expert. Todos os direitos reservados.</div>
         <div class="text-md-end text-center mt-2 mt-md-0">
-            Desenvolvido por <a href="#">Sua Agência</a>
+            Desenvolvido por <a href="https://github.com/nicoleferamaral" target="_blank" rel="noopener">Nicole Ferreira</a>
         </div>
     </div>
 </div>
-<a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp" style="position:fixed;right:24px;bottom:24px;z-index:1000;background:#25d366;border-radius:50%;padding:0.7rem;box-shadow:0 2px 8px rgba(30,60,120,0.12);"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:36px;height:36px;"></a>
+<a href="https://wa.me/5511999950188" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp" style="position:fixed;right:24px;bottom:24px;z-index:1000;background:#25d366;border-radius:50%;padding:0.7rem;box-shadow:0 2px 8px rgba(30,60,120,0.12);"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:36px;height:36px;"></a>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Efeito de digitação para o subtítulo
+document.addEventListener('DOMContentLoaded', function() {
+    var el = document.getElementById('header-typing');
+    if (!el) return;
+    var text = el.textContent;
+    el.textContent = '';
+    let i = 0;
+    function type() {
+        if (i <= text.length) {
+            el.textContent = text.substring(0, i);
+            i++;
+            setTimeout(type, 55);
+        } else {
+            el.style.borderRight = 'none';
+        }
+    }
+    setTimeout(type, 700);
+});
+</script>
 </body>
 </html> 
