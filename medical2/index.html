@@ -51,13 +51,117 @@
         .navbar .nav-link.active, .navbar .nav-link:focus { color: #ffd700 !important; font-weight: bold; }
         .wave-header {
             position: relative;
-            background: linear-gradient(120deg, #1a3fa3 60%, #3e8ed0 100%);
+            background: linear-gradient(135deg, #0a1f4a 0%, #1a3fa3 25%, #3e8ed0 50%, #1a3fa3 75%, #0a1f4a 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease-in-out infinite;
             color: #fff;
             overflow: hidden;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .logo-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            background: url('media/logo.png') no-repeat center/contain;
+            z-index: 1;
+            filter: drop-shadow(0 20px 40px rgba(255, 215, 0, 0.4)) brightness(1.2);
+            opacity: 0.9;
+            animation: logoFloat 6s ease-in-out infinite;
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                filter: drop-shadow(0 20px 40px rgba(255, 215, 0, 0.4)) brightness(1.2);
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.05) rotate(2deg);
+                filter: drop-shadow(0 30px 60px rgba(255, 215, 0, 0.6)) brightness(1.4);
+            }
+        }
+        
+        .luxury-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #ffd700 0%, rgba(255, 215, 0, 0.3) 70%, transparent 100%);
+            border-radius: 50%;
+            animation: particleFloat 8s linear infinite;
+        }
+        
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 12s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 10s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 14s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; animation-duration: 11s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; animation-duration: 13s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; animation-duration: 9s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2s; animation-duration: 15s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 4s; animation-duration: 12s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1s; animation-duration: 10s; }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(10vh) scale(1);
+            }
+            100% {
+                transform: translateY(-10vh) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        .luxury-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(ellipse, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 40%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.6;
+            }
         }
         .wave-header .wave-illustration {
             position: absolute;
@@ -73,6 +177,13 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem;
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
         .section-title {
             color: #1a3fa3;
@@ -181,10 +292,129 @@
             .wave-header {
                 min-height: 80vh;
             }
+            .header-content {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            .header-content h1 {
+                font-size: 2.5rem !important;
+            }
+            .logo-background {
+                width: 70%;
+                height: 70%;
+            }
+            .luxury-glow {
+                width: 90%;
+                height: 90%;
+            }
         }
+        
         @media (max-width: 767px) {
             .footer-main { text-align: center; }
             .footer-main .footer-social { justify-content: center !important; }
+            .wave-header {
+                min-height: 70vh;
+            }
+            .header-content {
+                padding: 1rem;
+                margin: 0.5rem;
+                border-radius: 15px;
+            }
+            .header-content h1 {
+                font-size: 2rem !important;
+                margin-bottom: 1rem !important;
+            }
+            .header-content h1 span {
+                font-size: 1.2rem !important;
+            }
+            .header-content p.lead {
+                font-size: 1.1rem !important;
+            }
+            .header-content p.fs-5 {
+                font-size: 0.9rem !important;
+            }
+            .logo-background {
+                width: 80%;
+                height: 80%;
+            }
+            .luxury-glow {
+                width: 95%;
+                height: 95%;
+            }
+            .particle {
+                width: 3px;
+                height: 3px;
+            }
+            .navbar .navbar-brand {
+                font-size: 1.1rem !important;
+            }
+            .navbar .navbar-brand img {
+                height: 35px;
+                width: 35px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .wave-header {
+                min-height: 60vh;
+            }
+            .header-content {
+                padding: 0.8rem;
+                margin: 0.3rem;
+                border-radius: 12px;
+            }
+            .header-content h1 {
+                font-size: 1.8rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .header-content h1 span {
+                font-size: 1rem !important;
+            }
+            .header-content p.lead {
+                font-size: 1rem !important;
+            }
+            .header-content p.fs-5 {
+                font-size: 0.8rem !important;
+            }
+            .logo-background {
+                width: 85%;
+                height: 85%;
+            }
+            .luxury-glow {
+                width: 98%;
+                height: 98%;
+            }
+            .particle {
+                width: 2px;
+                height: 2px;
+            }
+            .navbar .navbar-brand {
+                font-size: 1rem !important;
+            }
+            .navbar .navbar-brand img {
+                height: 30px;
+                width: 30px;
+            }
+            .footer-main {
+                padding: 2rem 0 1rem 0;
+            }
+            .footer-main h5 {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+            .footer-main ul li {
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+            .whatsapp-float {
+                right: 16px;
+                bottom: 16px;
+                padding: 0.5rem;
+            }
+            .whatsapp-float img {
+                width: 28px;
+                height: 28px;
+            }
         }
         /* Animação do logotipo */
         .logo-animado {
@@ -409,6 +639,145 @@
                 opacity: 1;
             }
         }
+        
+        /* Responsividade para seções de conteúdo */
+        @media (max-width: 991px) {
+            .services-section, .diferenciais-section, .aspiracao-section, .equipe-section {
+                padding: 3rem 0 1.5rem 0;
+            }
+            .section-title {
+                font-size: 2rem;
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .service-card, .diferencial-card, .aspiracao-card, .equipe-card {
+                margin-bottom: 1rem;
+            }
+            .ricardo-image {
+                max-width: 280px !important;
+                max-height: 280px !important;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .services-section, .diferenciais-section, .aspiracao-section, .equipe-section {
+                padding: 2rem 0 1rem 0;
+            }
+            .section-title {
+                font-size: 1.8rem;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+            .service-card, .diferencial-card, .aspiracao-card, .equipe-card {
+                padding: 1.5rem !important;
+                margin-bottom: 0.8rem;
+            }
+            .service-icon, .diferencial-icon, .aspiracao-icon, .equipe-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            .ricardo-image {
+                max-width: 240px !important;
+                max-height: 240px !important;
+            }
+            .ricardo-name {
+                font-size: 1.5rem !important;
+            }
+            .ricardo-role {
+                font-size: 1rem !important;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .services-section, .diferenciais-section, .aspiracao-section, .equipe-section {
+                padding: 1.5rem 0 0.8rem 0;
+            }
+            .section-title {
+                font-size: 1.6rem;
+                margin-top: 0.8rem;
+                margin-bottom: 0.8rem;
+            }
+            .service-card, .diferencial-card, .aspiracao-card, .equipe-card {
+                padding: 1rem !important;
+                margin-bottom: 0.6rem;
+            }
+            .service-icon, .diferencial-icon, .aspiracao-icon, .equipe-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            .ricardo-image {
+                max-width: 200px !important;
+                max-height: 200px !important;
+            }
+            .ricardo-name {
+                font-size: 1.3rem !important;
+            }
+            .ricardo-role {
+                font-size: 0.9rem !important;
+            }
+            .ricardo-list li {
+                font-size: 0.9rem;
+                padding: 0.6rem 0;
+            }
+        }
+        
+        /* Efeitos de scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .slide-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .zoom-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
     </style>
 </head>
 <body>
@@ -432,6 +801,19 @@
   </div>
 </nav>
 <div class="wave-header">
+    <div class="luxury-glow"></div>
+    <div class="luxury-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    <div class="logo-background"></div>
     <svg class="wave-illustration" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" fill-opacity="0.18" d="M0,80 C360,160 1080,0 1440,80 L1440,0 L0,0 Z"></path><path fill="#fff" fill-opacity="0.10" d="M0,100 C400,180 1040,20 1440,100 L1440,0 L0,0 Z"></path></svg>
     <!-- SVG linhas animadas -->
     <svg class="bg-globos" width="100%" height="100%" viewBox="0 0 1440 800" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
@@ -445,33 +827,39 @@
       </g>
     </svg>
     <div class="header-content">
-        <h1 class="display-5 fw-bold mb-3 header-title-anim">Tecnologia Médica Global<br><span class="fs-3 fw-light header-typing" id="header-typing">ao alcance de todos</span></h1>
-        <p class="lead header-fadein">Dr. Ricardo A. C. Azevedo</p>
-        <p class="fs-5 header-fadein" style="animation-delay:0.5s;">Tecnologia para vida</p>
+        <h1 class="display-4 fw-bold mb-4 header-title-anim" style="text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+            <span style="color: #ffffff; text-shadow: 0 2px 8px rgba(0,0,0,0.8); font-weight: 700;">MEDICAL EXPERT</span>
+            <br>
+            <span class="fs-2 fw-light header-typing" id="header-typing" style="color: #ffffff; text-shadow: 0 2px 8px rgba(0,0,0,0.8); font-weight: 600;">Inovação & Excelência</span>
+        </h1>
+        <p class="lead header-fadein" style="font-size: 1.3rem; color: #ffd700; text-shadow: 0 2px 8px rgba(0,0,0,0.8); font-weight: 600;">Dr. Ricardo A. C. Azevedo</p>
+        <p class="fs-5 header-fadein" style="animation-delay:0.5s; color: #ffffff; text-shadow: 0 2px 6px rgba(0,0,0,0.8); font-weight: 500;">Tecnologia de Ponta para a Vida</p>
+        <div class="mt-4 header-fadein" style="animation-delay:1s;">
+        </div>
     </div>
 </div>
 <section class="services-section">
     <div class="container">
-        <div class="text-center mb-5">
+        <div class="text-center mb-5 fade-in">
             <span class="text-warning fw-bold">— NOSSOS SERVIÇOS —</span>
             <h2 class="fw-bold mt-2 mb-4">O que oferecemos</h2>
         </div>
         <div class="row g-4 justify-content-center">
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 slide-up">
                 <div class="card service-card p-4 h-100">
                     <div class="service-icon mb-3"><i class="bi bi-heart-pulse"></i></div>
                     <h5 class="fw-bold">Tecnologia Médica de Ponta</h5>
                     <p>Localizada em Santos – SP, principal região portuária brasileira. A porta de entrada perfeita para a distribuição em larga escala para todo o Brasil.</p>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 slide-up">
                 <div class="card service-card p-4 h-100">
                     <div class="service-icon mb-3"><i class="bi bi-currency-dollar"></i></div>
                     <h5 class="fw-bold">Custo-Benefício</h5>
                     <p>Atendendo o Sistema Público de Saúde (SUS) e medicina de grupo de larga abrangência, que representam 74,7% do mercado de saúde no Brasil.</p>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 slide-up">
                 <div class="card service-card p-4 h-100">
                     <div class="service-icon mb-3"><i class="bi bi-people"></i></div>
                     <h5 class="fw-bold">Equipe Especializada</h5>
@@ -483,23 +871,23 @@
 </section>
 <section class="diferenciais-section">
     <div class="container">
-        <h2 class="section-title">Diferenciais Medical Expert</h2>
+        <h2 class="section-title fade-in">Diferenciais Medical Expert</h2>
         <div class="row g-4 justify-content-center">
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 slide-left">
                 <div class="card diferencial-card p-4 h-100">
                     <div class="diferencial-icon mb-3"><i class="bi bi-award"></i></div>
                     <h5 class="fw-bold">Qualidade e Segurança</h5>
                     <p>Produtos criteriosamente selecionados, com custos compatíveis e foco em qualidade para o setor público e privado.</p>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 slide-up">
                 <div class="card diferencial-card p-4 h-100">
                     <div class="diferencial-icon mb-3"><i class="bi bi-globe2"></i></div>
                     <h5 class="fw-bold">Atuação Nacional</h5>
                     <p>Distribuição em larga escala para todo o Brasil, com base estratégica em Santos-SP.</p>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 slide-right">
                 <div class="card diferencial-card p-4 h-100">
                     <div class="diferencial-icon mb-3"><i class="bi bi-person-check"></i></div>
                     <h5 class="fw-bold">Equipe Multidisciplinar</h5>
@@ -511,16 +899,16 @@
 </section>
 <section class="aspiracao-section">
     <div class="container">
-        <h2 class="section-title">Nossa Aspiração</h2>
+        <h2 class="section-title fade-in">Nossa Aspiração</h2>
         <div class="row g-4 justify-content-center">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 slide-left">
                 <div class="card aspiracao-card p-4 h-100">
                     <div class="aspiracao-icon mb-3"><i class="bi bi-bar-chart-line"></i></div>
                     <h5 class="fw-bold">Democratizar o Acesso</h5>
                     <p>Levar tecnologia de ponta para elevar o padrão da saúde a um número maior de pessoas.</p>
                 </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 slide-right">
                 <div class="card aspiracao-card p-4 h-100">
                     <div class="aspiracao-icon mb-3"><i class="bi bi-truck"></i></div>
                     <h5 class="fw-bold">Importação em Larga Escala</h5>
@@ -535,10 +923,10 @@
         <div class="ricardo-content">
             <h2 class="ricardo-title fade-in">Profissionais</h2>
             <div class="row align-items-center justify-content-center">
-                <div class="col-lg-5 mb-4 mb-lg-0 text-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 text-center slide-left">
                     <img src="media/ricardo-azevedo.png" alt="Ricardo Alexandre Castro de Azevedo" class="ricardo-image scale-in" style="max-width:320px;max-height:320px;">
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-7 slide-right">
                     <div class="ricardo-card slide-up">
                         <div class="ricardo-info">
                             <h3 class="ricardo-name">Ricardo Alexandre Castro de Azevedo</h3>
@@ -553,10 +941,10 @@
                 </div>
             </div>
             <div class="row align-items-center justify-content-center mt-5 flex-row-reverse">
-                <div class="col-lg-5 mb-4 mb-lg-0 text-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 text-center slide-right">
                     <img src="media/livia.jpg" alt="Lívia Primon Donini" class="ricardo-image scale-in" style="max-width:320px;max-height:320px;object-fit:cover;background:#eaf3ff;border:2px solid #4fd1ff;">
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-7 slide-left">
                     <div class="ricardo-card slide-up">
                         <div class="ricardo-info">
                             <h3 class="ricardo-name">Lívia Primon Donini</h3>
@@ -629,6 +1017,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     setTimeout(type, 700);
+    
+    // Efeito de scroll para animações
+    function checkScroll() {
+        const elements = document.querySelectorAll('.fade-in, .slide-up, .slide-left, .slide-right, .zoom-in');
+        
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('visible');
+            }
+        });
+    }
+    
+    // Verificar na carga inicial
+    checkScroll();
+    
+    // Verificar no scroll
+    window.addEventListener('scroll', checkScroll);
 });
 </script>
 </body>
