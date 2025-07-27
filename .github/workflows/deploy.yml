@@ -19,4 +19,4 @@ jobs:
           user: ${{ secrets.USER }}
           password: ${{ secrets.PASS }}
           localDir: medical2      
-          remoteDir: /home/medicalexxpert1/            
+          remoteDir: /home/medicalexxpert1/public_html            
