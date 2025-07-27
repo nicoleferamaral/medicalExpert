@@ -84,7 +84,7 @@ header {
 .hero-bg {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: url('bg-medical.jpg') no-repeat center/cover;
+    background: url('media/bg-medical.jpeg') no-repeat center/cover;
     opacity: 0.13;
     z-index: 1;
 }
